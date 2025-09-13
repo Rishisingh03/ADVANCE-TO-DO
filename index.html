@@ -1,62 +1,535 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advance To-do</title> 
-    <link
-    rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VedicGlow — Herbal Hair Care</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- Iconify for Cloudflare + thousands of icons -->
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <meta name="description" content="VedicGlow — Pure herbal hair care powders: Amla, Reetha, Shikakai, Bhringraj & Hibiscus. Shop natural hair care products.">
+
+  
 </head>
-<body onload="time()">
-    <div class="todo-container">
-        <div class="date-hour">
-            <p id="date">Date</p>
-            <p id="hour">Hour</p>
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="mark">VG</div>
+      <div>
+        <h1>VedicGlow</h1>
+        <div class="small">Pure • Herbal • Traditional</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#products">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="btn cart-btn" id="open-cart">Cart <span class="cart-count" id="cart-count">0</span></button>
+    </nav>
+  </header>
+
+  <section class="hero container">
+    <div class="text">
+      <div class="banner-card">
+        <h2>Glow Vedic Herbal Hair Care – Pack of 5</h2>
+        <p class="muted">Amla, Reetha, Shikakai, Bhringraj & Hibiscus — 100g each. Pure, chemical-free powders to cleanse & nourish hair the natural way.</p>
+
+        <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+          <button class="btn" onclick="scrollToProducts()">Shop Now</button>
+          <button class="btn" onclick="openContact()">Contact Us</button>
         </div>
 
-        <header>
-            <h1>To Do List</h1> 
-        </header>
-        <form action="" id="todo-form">
-            <p>Add your task Here</p>
-            <div class="form-control">
-                <input type="text" id="todo-input" placeholder="type here about your next task">
-               <button type="submit">
-                <i class="fa-thin fa-plus"></i>
-               </button>
-               
+        <ul style="display:flex;gap:14px;margin-top:14px;list-style:none;padding:0">
+          <li class="small">100% Natural</li>
+          <li class="small">Made in India</li>
+          <li class="small">Secure payment</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:12px;align-items:center">
+        <div class="product-quick">
+          <img src="/assets/IMAGES/Pack.jpg.jpg" alt="VedicGlow pack">
+          <div>
+            <div class="muted">From ₹450</div>
+            <div style="font-weight:700;font-size:18px">Glow Vedic Pack - 5 x 100g</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel">
+      <div class="banner-card">
+        <h3 style="margin:0">Why choose VedicGlow?</h3>
+        <p class="muted" style="margin-top:8px">Our powders use classic Ayurvedic herbs prepared with care. Free from sulfates, parabens, and synthetic fragrances.</p>
+
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <div style="flex:1">
+            <div class="small">Fast delivery</div>
+            <div style="font-weight:700">Across India</div>
+          </div>
+          <div style="flex:1">
+            <div class="small">Secure Checkout</div>
+            <div style="font-weight:700">Razorpay / UPI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 id="products">Products</h2>
+    <p class="muted">Click Add to Cart to try — you can change quantity in cart.</p>
+
+    <div class="grid" id="product-grid">
+      <div class="product-grid"></div>
+      
+      <!-- Product cards will be injected here by JS -->
+    </div>
+  </main>
+
+
+  <!-- Advertisement / Hero Section -->
+<section id="advertisement" style="padding:60px 20px; background:#f9fafb;">
+  <div style="max-width:1100px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+    
+    <!-- Left side: Image -->
+    <div>
+      <img id="hero-img" src="./assets/IMAGES/Shikakai_Front.png" alt="Shikakai Powder" style="width:100%; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+    </div>
+
+    <!-- Right side: Content -->
+    <div>
+      <h2 style="font-size:2rem; font-weight:700; margin-bottom:16px;">Shikakai Powder</h2>
+      <p style="font-size:1.1rem; color:#374151; margin-bottom:20px;">
+        Known as <strong>"Fruit for Hair"</strong> in Sanskrit, Shikakai is a natural hair cleanser that keeps your hair healthy and shiny.
+      </p>
+
+      <ul style="list-style:none; padding:0; margin:0 0 20px 0; font-size:1rem; color:#374151;">
+        <li>🌿 Promotes Hair Growth and Shine</li>
+        <li>🌿 Nourishes & Strengthens Roots</li>
+        <li>🌿 Reduces Frizz & Detangles</li>
+        <li>🌿 Maintains Natural pH Balance</li>
+      </ul>
+
+      <button onclick="scrollToProducts()" style="padding:12px 24px; background:#16a34a; color:white; font-size:1rem; border:none; border-radius:8px; cursor:pointer;">
+        Shop Now
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- About Us Section -->
+<section id="about-section" class="page-section container">
+  <h2>About Us</h2>
+  <div class="banner-card" style="padding:20px; margin-top:20px;">
+    <h3>Our Story</h3>
+    <p>
+      At <strong>VedicGlow</strong>, we bring together the timeless wisdom of Ayurveda with modern purity standards.
+      Each product is crafted to provide natural nourishment for your hair — free from chemicals, sulfates, and parabens.
+    </p>
+
+    <h3 style="margin-top:20px;">Mission & Vision</h3>
+    <p>
+      🌱 <strong>Mission:</strong> Deliver 100% natural herbal hair care to every home.<br>
+      🌟 <strong>Vision:</strong> To be the most trusted Ayurvedic hair care brand in India and beyond.
+    </p>
+
+    <h3 style="margin-top:20px;">Why Trust VedicGlow?</h3>
+    <ul>
+      <li>✅ Pure herbal ingredients</li>
+      <li>✅ Transparent sourcing</li>
+      <li>✅ Inspired by Ayurveda</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- How to Use Section -->
+<section id="how-to-use" style="padding:60px 20px; background:#fff;">
+  <div style="max-width:900px; margin:auto; text-align:center;">
+    <h2 style="font-size:2rem; font-weight:700; margin-bottom:20px;">How to Use</h2>
+    <p style="color:#374151; margin-bottom:30px;">Follow these simple steps for the best results with our herbal powders.</p>
+
+
+
+    <!-- Toggle Steps -->
+    <div style="text-align:left;">
+      <button class="toggle-btn" onclick="toggleStep(1)">Step 1: Mix with Water / Curd</button>
+      <div id="step-1" class="step-content">
+        <p>Take 2–3 tablespoons of powder in a bowl and mix with lukewarm water or curd until it forms a smooth paste.</p>
+      </div>
+
+      <button class="toggle-btn" onclick="toggleStep(2)">Step 2: Apply to Hair & Scalp</button>
+      <div id="step-2" class="step-content">
+        <p>Apply the paste evenly on your scalp and along the length of your hair. Massage gently for better absorption.</p>
+      </div>
+
+      <button class="toggle-btn" onclick="toggleStep(3)">Step 3: Leave & Rinse</button>
+      <div id="step-3" class="step-content">
+        <p>Leave it for 20–30 minutes. Rinse thoroughly with normal water. For best results, use 2–3 times a week.</p>
+      </div>
+    </div>
+ 
+</section>
+
+  <!-- Cart Panel (hidden by default) -->
+  <div id="cart-panel" class="cart-panel" style="display:none">
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+    <div style="border-top:1px dashed #e6e6e6;padding-top:12px;margin-top:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><div class="muted">Subtotal</div><div id="cart-subtotal">₹0</div></div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button class="btn" id="checkout-btn">Checkout</button>
+        <button class="btn secondary" id="close-cart">Close</button>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Simple Checkout Modal -->
+  <div id="checkout-modal" style="display:none;position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(2,6,23,0.45);align-items:center;justify-content:center;z-index:200">
+    <div style="background:var(--card);max-width:520px;margin:24px auto;border-radius:12px;padding:18px">
+      <h3>Checkout</h3>
+      <div id="checkout-items" style="max-height:220px;overflow:auto;margin-bottom:12px"></div>
+
+      <form id="checkout-form">
+        <label class="small">Full name</label>
+        <input type="text" id="cust-name" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;margin:6px 0">
+        <label class="small">Phone / WhatsApp</label>
+        <input type="tel" id="cust-phone" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;margin:6px 0">
+        <label class="small">Address</label>
+        <textarea id="cust-address" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;margin:6px 0"></textarea>
+
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn" type="submit">Place Order (Mock)</button>
+          <button class="btn secondary" type="button" id="cancel-checkout">Cancel</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+ <footer id="contact">
+<h2>Contact Us</h2>
+  <div class="contact-wrapper">
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <!-- Divider between sections -->
+<hr style="margin: 30px 0; border: none; border-top: 2px solid #eee;">
+
+      
+      <h3>Reach Us</h3>
+      <p>  <span class="iconify" data-icon="mdi:map-marker" style="color:#f97316; font-size:20px;"></span>Address: 123 Herbal Street, Lucknow, India</p>
+      <p> <span class="iconify" data-icon="mdi:email" style="color:#f97316; font-size:20px;"></span> Email: <a href="mailto:as.raigarh@gmail.com">support@vedicglow.co.in</a></p>
+      <p>  <span class="iconify" data-icon="mdi:phone" style="color:#f97316; font-size:20px;"></span>Phone: <a href="tel:+9199815 30228">+91 99815 30228</a></p>
+      <p><span class="iconify" data-icon="mdi:whatsapp" style="color:#25d366; font-size:20px;"></span> WhatsApp: <a href="https://wa.me/99815 30228" target="_blank">Chat with us</a></p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <h3>Send a Message</h3>
+      <form>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</footer>
+
+
+
+  <script>
+    
+    /* ---------- Sample product data ---------- */
+    const PRODUCTS = [
+  {
+    id: 'pack-of-5',
+    title: 'Glow Vedic Herbal Hair Care Powder — Pack of 5 (100g each)',
+    price: 450,
+    images: [
+      './assets/IMAGES/Pack.jpg.jpg',
+    ]
+  },
+  {
+    id: 'amla',
+    title: 'Amla Powder (100g)',
+    price: 250,
+    images: [
+      './assets/IMAGES/Amla_Front.png',
+    ]
+  },
+  {
+    id: 'shikakai',
+    title: 'Shikakai Powder (100g)',
+    price: 220,
+    images: [
+      './assets/IMAGES/Shikakai_Front.png',
+      './assets/IMAGES/Shikakai_Back.png',
+      
+    ]
+  },
+  {
+    id: 'Hibiscus',
+    title: 'Hibiscus Powder (100g)',
+    price: 235,
+    images: [
+      './assets/IMAGES/Hibiscus_Front.png',
+      
+    ]
+  },
+  {
+    id: 'Bhrigraj',
+    title: 'Bhrigraj Powder (100g)',
+    price: 265,
+    images: [
+      './assets/IMAGES/Bhrigraj_Front.png',
+      
+    ]
+  },
+  {
+    id: 'Reetha',
+    title: 'Reetha Powder (100g)',
+    price: 265,
+    images: [
+      './assets/IMAGES/Reetha_Front.png',
+      
+    ]
+  },
+  {
+    id: 'pack-of-3',
+    title: 'Glow Vedic Herbal Hair Care Powder — Pack of 3 (100g each)',
+    price: 220,
+    images: [
+      './assets/IMAGES/pack3.jpg.jpg',
+    ]
+  }
+  
+];
+
+
+    // Cart stored in localStorage for simplicity
+    let cart = JSON.parse(localStorage.getItem('vg_cart') || '[]');
+
+    // Helpers
+    function saveCart(){ localStorage.setItem('vg_cart', JSON.stringify(cart)); renderCart(); updateCount(); }
+    function currency(n){ return '₹' + Number(n).toLocaleString('en-IN'); }
+
+    // Render product grid
+const grid = document.getElementById('product-grid');
+function renderProducts(){
+  grid.innerHTML = '';
+  PRODUCTS.forEach(p => {
+    const card = document.createElement('div'); card.className='card';
+    card.innerHTML = `
+      <img src="${p.images[0]}" alt="${p.title}" 
+        onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\'><rect fill=\'%23f3f4f6\' width=\'100%\' height=\'100%\'></rect><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%238b9\'>Image</text></svg>'"> 
+      <h3>${p.title}</h3>
+      <div class="muted">${p.desc || ''}</div>
+      <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="price">${currency(p.price)}</div>
+          <div class="small" style="text-decoration:line-through;color:#cbd5e1">${currency(p.mrp || p.price)}</div>
+        </div>
+        <div class="actions">
+          <button class="btn" onclick="addToCart('${p.id}')">Add to Cart</button>
+          <button class="btn secondary" onclick="viewProduct('${p.id}')">View</button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  
+
+  // ✅ Set hero image after rendering products
+  const heroImg = document.getElementById("hero-img");
+  if(heroImg){
+    heroImg.src = PRODUCTS[0].images[0];  // first product’s first image
+  }
+}
+
+function findProduct(id){ 
+  return PRODUCTS.find(p=>p.id===id); 
+}
+
+    
+
+    // Cart functions
+    function addToCart(id){
+      const p = findProduct(id);
+      if(!p) return;
+      const existing = cart.find(c=>c.id===id);
+      if(existing) existing.qty++;
+      else cart.push({id:p.id,title:p.title,price:p.price,image:p.image,qty:1});
+      saveCart();
+      openCart();
+    }
+
+    function removeFromCart(id){ cart = cart.filter(c=>c.id!==id); saveCart(); }
+    function changeQty(id, delta){ const it = cart.find(c=>c.id===id); if(!it) return; it.qty += delta; if(it.qty<1) removeFromCart(id); saveCart(); }
+
+    function cartSubtotal(){ return cart.reduce((s,i)=>s + i.price * i.qty, 0); }
+
+    function renderCart(){
+      const panel = document.getElementById('cart-items');
+      const subtotalElem = document.getElementById('cart-subtotal');
+      panel.innerHTML = '';
+      if(cart.length===0){ panel.innerHTML = '<div class="small">Your cart is empty</div>'; subtotalElem.textContent = currency(0); return; }
+
+      cart.forEach(i =>{
+        const row = document.createElement('div'); row.className='cart-item';
+        row.innerHTML = `
+          <img src="${i.image}" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'200\\'><rect fill=\\'%23f3f4f6\\' width=\\'100%\\' height=\\'100%\\'></rect><text x=\\'50%\\' y=\\'50%\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' fill=\\'%238b9\\'>Image</text></svg>'"> 
+          <div style="flex:1">
+            <div style="font-weight:700">${i.title}</div>
+            <div class="small">${currency(i.price)} • Qty: <span id="qty-${i.id}">${i.qty}</span></div>
+            <div class="qty" style="margin-top:6px">
+              <button class="btn secondary" onclick="changeQty('${i.id}', -1)">-</button>
+              <button class="btn" onclick="changeQty('${i.id}', 1)">+</button>
+              <button class="btn secondary" onclick="removeFromCart('${i.id}')">Remove</button>
             </div>
-        </form>
-        <!--edit your task-->
-        <form action="" id="edit-form" class="hide">
-            <p>Edit Your Task</p>
-            <div class="form-control">
-                <input type="text" id="edit-input" placeholder="type here about your next task">
-               <button type="submit">
-                <i class="fa-solid fa-check-double"></i>
-               </button>
-                </div>
-            <button type="button" id="cancel-edit-btn">cancel</button>
-        </form>
+          </div>
+        `;
+        panel.appendChild(row);
+      });
+      subtotalElem.textContent = currency(cartSubtotal());
+      document.querySelectorAll(".toggle-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    this.classList.toggle("active");
+    let content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+});
 
-        <!--task list-->
-       <div class="todo-list" id="todo-list">
-        <div class="todo">
-            <h3>Some Defalut Task </h3>
-            <button class="finish-todo">
-                <i class="fa-solid fa-check"></i>
-            </button>
-            <button class="edit-todo">
-                <i class="fa-solid fa-pen"></i>
-            </button>
-            <button class="remove-todo">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-       </div>
-    </div>      
+    }
+
+    // UI helpers
+    const cartPanel = document.getElementById('cart-panel');
+    const cartCount = document.getElementById('cart-count');
+    function updateCount(){ cartCount.textContent = cart.reduce((s,i)=>s+i.qty,0); }
+
+    function openCart(){ cartPanel.style.display='block'; document.getElementById('open-cart').classList.add('active'); renderCart(); }
+    function closeCart(){ cartPanel.style.display='none'; }
+
+    document.getElementById('open-cart').addEventListener('click', ()=>{
+      if(cartPanel.style.display==='block') closeCart(); else openCart();
+    });
+    document.getElementById('close-cart').addEventListener('click', closeCart);
+
+    // Product view (simple) and scroll
+    function viewProduct(id){ const p = findProduct(id); if(!p) return alert('Product not found'); alert(p.title + '\n\n' + p.desc + '\n\nPrice: ' + currency(p.price)); }
+    function scrollToProducts(){ document.getElementById('products').scrollIntoView({behavior:'smooth'}); }
+    function openContact(){ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); }
+    
+
+    // Checkout flow (mock)
+    document.getElementById('checkout-btn').addEventListener('click', ()=>{
+      if(cart.length===0) return alert('Cart is empty');
+      document.getElementById('checkout-items').innerHTML = cart.map(i => `<div style="display:flex;justify-content:space-between;padding:6px 0"><div>${i.title} x ${i.qty}</div><div>${currency(i.price*i.qty)}</div></div>`).join('');
+      document.getElementById('checkout-modal').style.display='flex';
+    });
+
+    document.getElementById('cancel-checkout').addEventListener('click', ()=>{ document.getElementById('checkout-modal').style.display='none'; });
+
+    document.getElementById('checkout-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('cust-name').value.trim();
+      const phone = document.getElementById('cust-phone').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+      if(!name||!phone||!address) return alert('Please fill all fields');
+
+      
+
+      
+
+      /* In a real site: send order to your backend, trigger payment gateway, store order in DB */
+      const order = {
+        id: 'ORD' + Date.now(), name, phone, address, items: cart, total: cartSubtotal()
+      };
+
+      console.log('Order created (mock)', order);
+      alert('Order placed successfully! Order ID: ' + order.id + '\n(This is a demo — integrate a backend to accept real payments)');
+      cart = [];
+      saveCart();
+      document.getElementById('checkout-modal').style.display='none';
+      closeCart();
+    });
+   // ===== Reveal-on-scroll (robust) =====
+(function initRevealOnScroll(){
+  const selector = '.page-section, #how-to-use, #advertisement, footer';
+  const targets = document.querySelectorAll(selector);
+  if(!targets.length) return;
+
+  const options = {
+    threshold: 0.12,
+    rootMargin: '0px 0px -8% 0px'
+  };
+
+  const io = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); // animate once
+      }
+    });
+  }, options);
+
+  targets.forEach(el => {
+    // If already in view on load, reveal immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('active');
+    } else {
+      io.observe(el);
+    }
+  });
+})();
+
+// ===== Accordion helper to support inline onclick="toggleStep(n)" and clicks =====
+function toggleStep(n){
+  const content = document.getElementById('step-' + n);
+  const btn = document.querySelectorAll('.toggle-btn')[n - 1];
+  if(!content || !btn) return;
+  btn.classList.toggle('active');
+  if (content.style.display === 'block') content.style.display = 'none';
+  else content.style.display = 'block';
+}
+
+// attach click handlers for any toggle-btns (safe to call multiple times)
+(function initAccordionButtons(){
+  document.querySelectorAll('.toggle-btn').forEach((btn, idx) => {
+    // avoid attaching duplicate listeners by marking it
+    if (btn.dataset._hasAccordion) return;
+    btn.dataset._hasAccordion = '1';
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      btn.classList.toggle('active');
+      if (!content) return;
+      if (content.style.display === 'block') content.style.display = 'none';
+      else content.style.display = 'block';
+    });
+  });
+})();
+
+    
+
+    // Initialize
+    renderProducts(); renderCart(); updateCount();
+    
+  </script>
+
+  
 </body>
 </html>
